@@ -1,0 +1,16 @@
+{#{dump(Tests)}#}
+<table border="1">
+{% for Test in Tests %}
+<tr>
+<td>
+{{Test.id}}
+</td>
+<td>
+{{Test.Test}}
+</td>
+<td>
+{{Test.email}}
+</td>
+</tr>
+{% endfor %}
+</table>

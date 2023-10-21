@@ -1,0 +1,28 @@
+{#{dump(authors)}#}
+<table border="1">
+<th> id </th>
+<th> username </th>
+<th> email </th>
+<th> Delete </th>
+<th> Update </th>
+{% for author in authors %}
+<tr>
+<td>
+{{author.id}}
+</td>
+<td>
+{{author.username}}
+</td>
+<td>
+{{author.email}}
+</td>
+<td>
+<a href ="{{path ('delete_author', {id: author.id})}}">delete</a>
+</td>
+<td>
+<a href ="{{path ('update_author', {id: author.id})}}">update</a>
+</td>
+</tr>
+
+{% endfor %}
+</table>

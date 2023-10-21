@@ -1,0 +1,41 @@
+{#{dump(authors)}#}
+<table border="1">
+<th> id </th>
+<th> Title </th>
+<th> Category </th>
+<th> Published </th>
+<th> Publicationdate </th>
+<th> Author Name </th>
+<th> Delete </th>
+<th> Update </th>
+{% for Book in Book %}
+<tr>
+<td>
+{{Book.id}}
+</td>
+<td>
+{{Book.title}}
+</td>
+<td>
+{{Book.category}}
+</td>
+<td>
+{{Book.published}}
+</td>
+<td>
+{{Book.publicationdate|date('Y-m-d H:i:s')}}
+</td>
+<td>
+{{Book.author.userName}}
+</td>
+
+<td>
+<a href ="{{path ('delete_Book', {id: Book.id})}}">delete</a>
+</td>
+<td>
+<a href ="{{path ('update_Book', {id: Book.id})}}">update</a>
+</td>
+</tr>
+
+{% endfor %}
+</table>

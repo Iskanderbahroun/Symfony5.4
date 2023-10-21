@@ -1,0 +1,42 @@
+{% if authors is defined and authors|length >0 %}
+<p> NB_author : {{authors|length}} </p>
+{% set total_books = 0    %}
+<table border='1'>
+
+<th> id </th>
+<th> picture </th>
+<th> username </th>
+<th> email </th>
+<th> nb_books </th>
+<th> Details </th>
+
+
+{% for author in authors %}
+
+<tr>
+<td>
+{{author.id}}
+</td>
+<td>
+<img src = "{{asset(author.picture)}} " witdh ="150" height="120">
+</td>
+<td>
+{{author.username | upper}}
+</td>
+<td>
+{{author.email}}
+</td>
+<td>
+{{author.nb_books}}
+{% set total_books = author.nb_books + total_books %}
+</td>
+<td>
+<a href = "{{path('app_author_details',{id: author.id})}}"> Details </a>
+</td>
+{% endfor %}
+</tr>
+</table>
+{{total_books}}
+{% else %}
+<h1> le tableau est vide </h1>
+{% endif %}

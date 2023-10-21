@@ -1,0 +1,16 @@
+{#{dump(authors)}#}
+<table border="1">
+{% for author in authors %}
+<tr>
+<td>
+{{author.id}}
+</td>
+<td>
+{{author.username}}
+</td>
+<td>
+{{author.email}}
+</td>
+</tr>
+{% endfor %}
+</table>

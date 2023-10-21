@@ -1,0 +1,8 @@
+{% for author in authors %}
+{% if author.id == id %}
+<p> id: {{author.id}} </p>
+<p> username: {{author.username}} </p>
+<img src = "{{asset(author.picture)}} " witdh ="150" height="120">
+<p> nb_books: {{author.nb_books}} </p>
+{% endif %}
+{% endfor %}
