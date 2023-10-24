@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Author;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -45,4 +46,13 @@ class AuthorRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function trieQB () {
+    $req=$this -> createQueryBuilder('a')
+    ->orderBy('a.email','ASC')
+    -> getQuery()
+    -> getResult () 
+    ;
+    return $req ;
+}
+
 }

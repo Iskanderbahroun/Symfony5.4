@@ -11,7 +11,7 @@ use phpDocumentor\Reflection\Types\Integer;
 class Book
 {
     #[ORM\Id]
-   
+    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 

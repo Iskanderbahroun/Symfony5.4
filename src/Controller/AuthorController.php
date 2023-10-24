@@ -107,4 +107,11 @@ public function delete($id, AuthorRepository $repository,EntityManagerInterface 
             'f' => $form->createView(),
         ]);
     }
+    #[Route('/author/trieQB', name: 'trieQB_author')]
+    public function trieQB_author (AuthorRepository $authorrepo) {
+        $authors = $authorrepo->trieQB();
+        return $this->render('author/read.html.twig',['authors'=> $authors]);
+       
+          }
+       
 }

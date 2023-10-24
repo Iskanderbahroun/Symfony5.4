@@ -17,7 +17,7 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('id')
+            
             ->add('title')
             ->add('category', ChoiceType::class, [
                 'choices' => [
@@ -48,4 +48,5 @@ class BookType extends AbstractType
             'data_class' => Book::class,
         ]);
     }
+    
 }

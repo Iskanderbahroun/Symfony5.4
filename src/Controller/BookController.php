@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Form\BookType;
 use App\Entity\Book;
+use App\Form\SearchType;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,5 +80,34 @@ public function delete($id, BookRepository $repository,EntityManagerInterface $e
             'f' => $form->createView(),
         ]);
     }
-  
+    #[Route('/Book/search', name: 'searchQB_Book')]
+    public function searchBook(Request $request,BookRepository $bookRepository): Response
+    {   $book=new Book();
+        $form=$this->createForm(SearchType::class,$book);
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
+            return $this->render('book/search.html.twig', [
+                'books' => $bookRepository->searchQB($book->getTitle()),
+                'f'=>$form->createView()
+            ]);
+        }
+if($form->isSubmitted()){
+            return $this->render('book/search.html.twig', [
+                'books' => $bookRepository->searchQB($book->getTitle()),
+                'f'=>$form->createView()
+            ]);
+        }
+        return $this->render('book/search.html.twig', [
+            'books' => $bookRepository->findAll(),
+            'f'=>$form->createView()
+        ]);
+    }
+    #[Route('/Book/triTitle', name: "triTitle")]
+    public function triTitle(BookRepository $rep)
+    {
+        $books = $rep->triTitle();
+        return $this->render("book/read.html.twig", [
+            "Book" => $books,
+        ]);
+    }
 }

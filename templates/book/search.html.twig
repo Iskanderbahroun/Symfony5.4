@@ -1,0 +1,37 @@
+<h1>List books</h1>
+    {{ form_start(f)}}
+    <b>{{ form_label(f.title)}}:</b>
+    {{ form_widget(f.title)}}
+    {{ form_widget(f.search)}}
+    {{ form_end(f)}}
+    <table class="table" border="2px">
+        
+            <tr>
+                <th>Title</th>
+                <th>PublicationDate</th>
+                <th>Category</th>
+                <th>Published</th>
+      
+            </tr>
+      
+       
+        
+{% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publicationDate ? book.publicationDate|date('F d, Y') : '' }}</td>
+                <td>{{ book.published ? 'Yes' : 'No' }}</td>
+                <td>{{ book.category }}</td>
+                
+                  
+                
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+             
+  
+    </table>
